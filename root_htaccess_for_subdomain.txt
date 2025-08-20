@@ -1,0 +1,9 @@
+# COREサーバー サブドメインルート用 .htaccess
+# /public_html/iseyohin.geo.jp/.htaccess として配置
+
+RewriteEngine On
+RewriteBase /
+
+# iseyohin ディレクトリ内のアプリにリダイレクト
+RewriteCond %{REQUEST_URI} !^/iseyohin/
+RewriteRule ^(.*)$ iseyohin/$1 [L]

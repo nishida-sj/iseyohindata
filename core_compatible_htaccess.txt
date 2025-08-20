@@ -1,0 +1,37 @@
+# COREサーバー対応 .htaccess
+# シンプルで安全な設定
+
+# デフォルトページ設定
+DirectoryIndex index.html index.php
+
+# 基本的なリライト（シンプル版）
+RewriteEngine On
+
+# 静的ファイルは直接アクセス許可
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^.*$ - [L]
+
+# ディレクトリ直接アクセス許可
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [L]
+
+# setup.php は直接アクセス許可
+RewriteRule ^setup\.php$ - [L]
+
+# その他を public/ にリダイレクト
+RewriteRule ^(.*)$ public/$1 [L]
+
+# セキュリティ設定
+<Files ".env*">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files "*.log">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# PHPエラー設定
+php_flag display_errors Off
+php_flag log_errors On

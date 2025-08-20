@@ -1,0 +1,21 @@
+# シンプルな .htaccess（COREサーバー対応）
+# 500エラー解決用
+
+# デフォルトページ設定
+DirectoryIndex index.html index.php
+
+# .envファイル保護
+<Files ".env">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# ログディレクトリ保護
+<Files "*.log">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# PHPエラー設定
+php_flag display_errors Off
+php_flag log_errors On

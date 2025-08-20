@@ -1,0 +1,27 @@
+# 安全な.htaccess - COREサーバー用（段階的導入）
+
+# エラー時の停止防止
+ErrorDocument 500 "Internal Server Error - Please check configuration"
+
+# デフォルトページ設定
+DirectoryIndex index.html index.php
+
+# 基本セキュリティ
+<Files ".env*">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files "*.log">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# PHPエラー設定
+php_flag display_errors Off
+php_flag log_errors On
+
+# 簡単なリライト（段階的に有効化）
+# RewriteEngine On
+# RewriteRule ^$ public/ [L]
+# RewriteRule ^(?!public/)(.*)$ public/$1 [L]

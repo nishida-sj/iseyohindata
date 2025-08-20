@@ -1,0 +1,39 @@
+デプロイ準備完了ガイド
+==================
+
+【現在の状況】
+✅ deploy_minimal.php - 動作OK
+❌ index.php - 存在しない（404エラー）
+✅ .htaccess - 問題解決済み
+
+【次の手順】
+
+ステップ1: 一時index.phpをアップロード
+→ FTPで index_temporary.php を index.php にリネームしてアップロード
+
+ステップ2: サイト動作確認
+→ http://iseyohin.geo.jp/ でアクセス確認
+
+ステップ3: 本格デプロイ実行
+→ http://iseyohin.geo.jp/deploy_minimal.php
+→ パスワード: NishidaSJ
+→ GitHubから最新版をデプロイ
+
+【デプロイ後】
+- 完全な幼稚園用品申込システムが稼働
+- 商品管理機能
+- 注文受付機能  
+- メール通知機能
+- CSV出力機能
+
+【トラブル時】
+1. .htaccessを無効化（リネーム）
+2. 直接PHPファイルにアクセス
+3. test_info.php で環境確認
+
+【運用開始準備】
+- .env設定（データベース情報）
+- 商品画像アップロード用ディレクトリ作成
+- メール設定確認
+
+CORE-MINIでの安定稼働準備完了！

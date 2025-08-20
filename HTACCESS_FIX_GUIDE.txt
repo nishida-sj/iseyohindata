@@ -1,0 +1,40 @@
+.htaccess問題の解決ガイド
+==========================
+
+【問題】
+元の.htaccessファイルがCORE-MINIで内部サーバーエラーを引き起こしている
+
+【原因】
+1. RewriteRuleの複雑な設定がCORE-MINIで非対応
+2. mod_headers.cが利用できない可能性
+3. Directory設定の構文問題
+
+【解決手順】
+
+ステップ1: 簡素化.htaccessに置き換え
+→ FTPで .htaccess_simple を .htaccess にリネーム
+
+ステップ2: 最小デプロイスクリプトをテスト
+→ deploy_minimal.php でデプロイテスト
+
+ステップ3: サイト動作確認
+→ http://iseyohin.geo.jp/ で基本動作確認
+
+【新しい.htaccess内容】
+- デフォルトインデックス設定のみ
+- .envファイル保護のみ  
+- エラー表示設定のみ
+- 複雑なRewriteRule削除
+- mod_headers設定削除
+
+【影響】
+- SEO用URLリライトは無効化
+- セキュリティヘッダーは無効化
+- 基本機能は維持
+
+【運用】
+- 直接URLアクセス: http://iseyohin.geo.jp/index.php
+- 管理画面: http://iseyohin.geo.jp/admin/
+- デプロイ: http://iseyohin.geo.jp/deploy_minimal.php
+
+CORE-MINIの制限に合わせた最小設定で安定動作を優先

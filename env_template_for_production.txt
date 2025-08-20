@@ -1,0 +1,37 @@
+# 本番環境用 .env ファイルテンプレート
+# このファイルを .env として /public_html/iseyohin.geo.jp/.env に配置
+
+ENV=production
+DEBUG=false
+
+# データベース設定（COREサーバー用）
+DB_HOST=mysql1234.xserver.jp
+DB_NAME=nishidasj_iseyohin
+DB_USERNAME=nishidasj_iseyohin
+DB_PASSWORD=NishidaSJ
+DB_CHARSET=utf8mb4
+
+# メール設定（要調整）
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=your_gmail@gmail.com
+MAIL_PASSWORD=your_app_password
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=noreply@iseyohin.geo.jp
+MAIL_FROM_NAME=双康幼稚園用品申込システム
+
+# 管理者メール
+ADMIN_EMAIL=admin@iseyohin.geo.jp
+
+# セキュリティ設定
+APP_KEY=Sk7x9Kp2Qm8Vn3Rl5Wc6Df4Gh1Jz0Tb9
+CSRF_TOKEN_EXPIRE=3600
+
+# アップロード設定
+MAX_UPLOAD_SIZE=5242880
+ALLOWED_IMAGE_EXTENSIONS=jpg,jpeg,png,gif
+
+# 申込設定
+ORDER_ENABLED=true
+ORDER_START_DATE=2025-01-01
+ORDER_END_DATE=2025-03-31

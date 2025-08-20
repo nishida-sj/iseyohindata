@@ -1,0 +1,67 @@
+# 双康幼稚園用品申込サイト - COREサーバー サブドメイン用設定
+# サブドメイン iseyohin.geo.jp 用の設定
+
+# リライトエンジン有効化
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+
+# 管理・設定ページへの直接アクセス許可
+RewriteCond %{REQUEST_URI} ^/setup\.php$ [OR]
+RewriteCond %{REQUEST_URI} ^/database/ [OR]
+RewriteCond %{REQUEST_URI} ^/admin [OR]
+RewriteCond %{REQUEST_URI} ^/api/
+RewriteRule ^(.*)$ - [L]
+
+# 静的ファイルの直接アクセス許可
+RewriteCond %{REQUEST_URI} \.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ [OR]
+RewriteCond %{REQUEST_URI} ^/storage/product_images/
+RewriteRule ^(.*)$ - [L]
+
+# 既に public/ で始まっている場合はスルー
+RewriteCond %{REQUEST_URI} ^/public/
+RewriteRule ^(.*)$ - [L]
+
+# その他全てを public/ にリダイレクト
+RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# デフォルトインデックス設定
+DirectoryIndex index.html index.php public/index.php
+
+# セキュリティ設定
+# .envファイルへのアクセス拒否
+<Files ".env*">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# 設定ディレクトリへのアクセス拒否
+<Directory "config">
+    Order allow,deny
+    Deny from all
+</Directory>
+
+# srcディレクトリへのアクセス拒否
+<Directory "src">
+    Order allow,deny
+    Deny from all
+</Directory>
+
+# ログファイルへのアクセス拒否
+<Files "*.log">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# PHPのエラー表示を無効にする（本番環境）
+php_flag display_errors Off
+php_flag log_errors On
+
+# セキュリティヘッダー追加
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options DENY
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+</IfModule>

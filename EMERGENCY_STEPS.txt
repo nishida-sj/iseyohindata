@@ -1,0 +1,40 @@
+緊急対応手順 - Internal Server Error
+================================
+
+【状況】
+PHPファイルすべてでInternal Server Errorが発生
+
+【原因候補】
+1. .htaccessファイルの設定問題
+2. PHPバージョン非対応コード
+3. ファイル権限問題
+4. サーバー設定変更
+
+【緊急確認手順】
+
+ステップ1: HTMLファイルテスト
+→ FTPで test_simple.html をアップロード
+→ http://iseyohin.geo.jp/test_simple.html でアクセス
+→ 表示されれば基本的なWebサーバー機能はOK
+
+ステップ2: .htaccessの無効化
+→ FTPで .htaccess を .htaccess_backup にリネーム
+→ test_basic.php でアクセステスト
+
+ステップ3: 最小PHPテスト
+→ test_basic.php でアクセステスト
+→ test_info.php でPHP情報確認
+
+ステップ4: 権限確認
+→ FTPでファイル権限を644に設定
+→ ディレクトリ権限を755に設定
+
+【アップロード用テストファイル】
+- test_simple.html (HTML動作確認)
+- test_basic.php (最小PHP動作確認)
+- test_info.php (PHP設定確認)
+
+【次の対応】
+1. HTMLが表示される → PHPの問題
+2. HTMLも表示されない → サーバー設定問題
+3. .htaccess無効化で改善 → .htaccess設定問題

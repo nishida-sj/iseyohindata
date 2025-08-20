@@ -1,0 +1,39 @@
+# 環境設定ファイル
+.env
+.env.*
+
+# ログファイル
+logs/
+*.log
+
+# アップロード画像（本番データ）
+storage/product_images/*
+!storage/product_images/.gitkeep
+
+# 一時・テスト・デバッグファイル
+deploy_*.php
+test_*.php
+debug_*.php
+zip_test.php
+*_temporary.php
+*_minimal.php
+
+# バックアップ
+backups/
+*.backup
+
+# システム一時ファイル
+.DS_Store
+Thumbs.db
+*.tmp
+*.temp
+
+# IDE設定
+.vscode/
+.idea/
+*.sublime-*
+
+# 開発用ファイル
+TODO.md
+NOTES.md
+*_LOCAL.php

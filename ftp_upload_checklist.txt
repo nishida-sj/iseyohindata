@@ -1,0 +1,29 @@
+FTPアップロード チェックリスト
+=====================================
+
+【アップロード先】
+ftp.coreserver.jp
+ユーザー名: nishidasj
+パスワード: [COREサーバーパスワード]
+ディレクトリ: /public_html/iseyohin.geo.jp/
+
+【必須アップロードファイル】
+☐ deploy_manual_core_mini.php
+☐ FTP_DEPLOY_MANUAL.md (参考用)
+
+【確認事項】
+☐ ファイルパーミッション 644
+☐ アクセスURL: http://iseyohin.geo.jp/deploy_manual_core_mini.php
+☐ デプロイパスワード: NishidaSJ
+
+【初回テスト手順】
+1. ☐ FTPでdeploy_manual_core_mini.phpをアップロード
+2. ☐ ブラウザでアクセス確認
+3. ☐ パスワード入力・デプロイ実行
+4. ☐ ログ確認・エラーチェック
+5. ☐ サイト動作確認
+
+【運用開始後】
+- GitHubにコミット後、デプロイURLでワンクリック更新
+- 月額220円でGitHub連携可能
+- バックアップ自動作成で安心運用
